@@ -1,22 +1,6 @@
 # ifndef curiosity_h
 # define curiosity_h
 
-# include <list>
-
-class Graph {
-private:
-    struct neighbor {
-        Graph *n;
-        int distance;
-    };
-    std::list <neighbor*> neighbors;
-
-public:
-    Graph();
-    void addNeighbor(Graph &g, int dist);
-
-};
-
 class CurUESPI {
 private:
     double tcapacity;
