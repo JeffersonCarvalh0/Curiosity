@@ -1,6 +1,8 @@
 # include "graph.h"
 # include <list>
 
+// Must be compiled with C++11 standard or later
+
 using namespace std;
 
 Graph::Graph(unsigned int n) {
@@ -8,9 +10,14 @@ Graph::Graph(unsigned int n) {
     v = n;
 }
 
-void Graph::addEdge(const int &orig, const int &dest, const int &weight) {
-    // Adds a new edge at the end of the edge's list of a vertex
-    vertices[orig].push_back(Edge{orig, dest, weight});
+bool Graph::addEdge(const int &orig, const int &dest, const int &weight) {
+    // Adds a new edge at the end of the edge's list of a vertex.
+    // Return true if the operation was successful
+    if ((orig >= 0 && orig < v) && (dest >= 0 && dest < v)) {
+        vertices[orig].push_back(Edge{orig, dest, weight});
+        return true;
+    }
+    return false;
 }
 
 bool Graph::isEdge(const int &orig, const int &dest) {
