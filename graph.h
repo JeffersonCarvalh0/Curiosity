@@ -25,7 +25,8 @@ public: // Methods
     explicit Graph(const unsigned int n);
 
     // Links two vertices
-    bool addEdge(const int &orig, const int &dest, const int &weight = 0);
+    bool addEdge(unsigned const int &orig, unsigned const int &dest,
+        const int &weight = 0);
 
     // true if there is an edge linking them
     bool isEdge(const int &orig, const int &dest, const int &weight) const;

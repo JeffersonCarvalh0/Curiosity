@@ -16,7 +16,8 @@ Graph::Graph(unsigned int n) : v(n) {
     e = 0;
 }
 
-bool Graph::addEdge(const int &orig, const int &dest, const int &weight) {
+bool Graph::addEdge(unsigned const int &orig, unsigned const int &dest,
+    const int &weight) {
     // Adds a new edge at the end of the edge's list of a vertex.
     // Return true if the operation was successful
     if ((orig >= 0 && orig < v) && (dest >= 0 && dest < v)) {
@@ -62,7 +63,7 @@ int Graph::dijkstra(const unsigned int v1, const unsigned int v2,
     // Add v1 in the priority queue
     queue.push(Edge{v1, v1, 0});
 
-    int tempVertex;
+    unsigned int tempVertex;
     bool found = false;
     // Main loop
     while(!found && !queue.empty()) {
@@ -74,7 +75,7 @@ int Graph::dijkstra(const unsigned int v1, const unsigned int v2,
         if (!visited[tempVertex]) {
             // Check if there is and edge between the last vertex in path and
             //the one that will be added
-            if (tempVertex != v1 && !isEdge(path.back(), tempVertex))
+            while (tempVertex != v1 && !isEdge(path.back(), tempVertex))
                 path.pop_back();
             // Add it to shortest path
             path.push_back(tempVertex);
@@ -124,7 +125,7 @@ unsigned int Graph::getEdgNum() const {
 }
 
 ostream& operator << (ostream &out, const Graph &g) {
-    for (int i = 0; i < g.v; ++i) {
+    for (unsigned int i = 0; i < g.v; ++i) {
         cout << "\nVertex " << i << ": \n";
         for (Graph::Edge &e : g.vertices[i])
             cout << "(" << e.orig << ", " << e.dest << ", " << e.weight << ")";
